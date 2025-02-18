@@ -8,6 +8,10 @@ router.get("/sign-up", (req, res) => {
   res.render("auth/sign-up.ejs");
 });
 
+router.get("/sign-in", (req, res) => {
+  res.render("auth/sign-in.ejs");
+});
+
 router.post("/sign-up", async (req, res) => {
   const userInDatabase = await User.findOne({ username: req.body.username });
   if (userInDatabase) {
@@ -22,5 +26,6 @@ router.post("/sign-up", async (req, res) => {
   const user = await User.create(req.body);
   res.send(`Thanks for signing up ${user.username}`);
 });
+
 
 module.exports = router;
